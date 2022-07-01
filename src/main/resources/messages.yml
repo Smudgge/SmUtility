@@ -1,0 +1,29 @@
+# -----------------------------------------
+# Thank you for downloading this plugin! <3
+#
+# Author : Smudge
+# -----------------------------------------
+
+prefix: '&8&l[&f&lServer&8&l]&a'
+
+# Chat colour
+default: '&#ffffee'
+vanished: '&#c0fce6'
+
+# Command messages
+reloaded: '{prefix} Reloaded all configs! <3'
+
+playerIsOffline: '{prefix} Player is offline'
+
+# Make your servers colourised!
+# When ever the plugin mentions a server it will format it
+# using this list of servers
+# <Server Name>: 'What it should be replaced with'
+servers:
+  TestingServer: '&a&lTest Server'
+  Default: '&f&l{server}'
+
+# Rank Colours
+# smutility.rank.<name>
+ranks:
+  Default: '&f'
