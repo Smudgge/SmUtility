@@ -1,5 +1,6 @@
 # SmUtility
 Proxy Server | Velocity Utility plugin
+
 [![CodeFactor](https://www.codefactor.io/repository/github/smuddgge/smutility/badge)](https://www.codefactor.io/repository/github/smuddgge/smutility)
 
 ## Links
