@@ -13,13 +13,13 @@ package me.smudge.smutility;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
+import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import me.smudge.smutility.commands.CommandHandler;
 import me.smudge.smutility.configuration.ConfigManager;
-import me.smudge.smutility.utility.Send;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -27,7 +27,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "smutility",
         name = "SmUtility",
-        version = "1.0.1",
+        version = "1.0.2",
         description = "A Velocity Utility Plugin",
         url = "https://smudgg.netlify.app",
         authors = {"Smudge"}
@@ -54,12 +54,17 @@ public class SmUtility {
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
 
-        Send.logHeader();
+        MessageManager.logHeader();
 
         // Setup commands
         SmUtility.commandHandler = new CommandHandler();
         SmUtility.commandHandler.setup();
 
+    }
+
+    @Subscribe
+    public void onPlayerChat(PlayerChatEvent event) {
+        EventManager.onPlayerChat(event);
     }
 
     /**

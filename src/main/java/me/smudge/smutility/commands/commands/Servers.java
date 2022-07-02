@@ -12,11 +12,11 @@
 package me.smudge.smutility.commands.commands;
 
 import com.velocitypowered.api.proxy.server.RegisteredServer;
+import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.SmUtility;
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
 import me.smudge.smutility.configuration.ConfigManager;
-import me.smudge.smutility.utility.ServerManager;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 public class Servers extends CustomCommand {
 

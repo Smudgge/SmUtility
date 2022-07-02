@@ -11,10 +11,10 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
 import me.smudge.smutility.configuration.ConfigManager;
-import me.smudge.smutility.utility.Send;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 public class Report extends CustomCommand {
     @Override
@@ -30,7 +30,7 @@ public class Report extends CustomCommand {
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
-        Send.all(
+        MessageManager.all(
                 message.replace("{player}", player.getName()).replace("{message}", arguments),
                 ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee")
         );

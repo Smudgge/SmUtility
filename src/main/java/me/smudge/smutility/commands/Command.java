@@ -19,7 +19,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
 import me.smudge.smutility.SmUtility;
-import me.smudge.smutility.utility.UtilityPlayer;
+import me.smudge.smutility.UtilityPlayer;
 
 /**
  * Represents a command

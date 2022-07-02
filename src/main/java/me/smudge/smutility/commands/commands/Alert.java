@@ -11,9 +11,9 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
-import me.smudge.smutility.utility.Send;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 public class Alert extends CustomCommand {
 
@@ -30,8 +30,8 @@ public class Alert extends CustomCommand {
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
-        Send.all(message.replace("{message}", arguments));
-        Send.log(message.replace("{message}", arguments));
+        MessageManager.all(message.replace("{message}", arguments));
+        MessageManager.log(message.replace("{message}", arguments));
 
     }
 }

@@ -11,9 +11,9 @@
 
 package me.smudge.smutility.commands;
 
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.configuration.ConfigManager;
 import me.smudge.smutility.configuration.ConfigurationSection;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 /**
  * Represents a custom command

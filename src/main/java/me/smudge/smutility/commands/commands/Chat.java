@@ -11,11 +11,11 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
 import me.smudge.smutility.configuration.ConfigurationSection;
-import me.smudge.smutility.utility.Send;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Chat extends Command {
     /**
      * Players that have it toggled
      */
-    private ArrayList<String> playerNames = new ArrayList<>();
+    public ArrayList<String> playerNames = new ArrayList<>();
 
     /**
      * New instance of this command
@@ -67,7 +67,7 @@ public class Chat extends Command {
             if (this.playerNames.contains(player.getName())) this.playerNames.remove(player.getName());
             else this.playerNames.add(player.getName());
 
-            player.sendMessage("{prefix} Toggled &f" + this.name);
+            player.sendMessage("{prefix} Toggled &f" + this.name + " &e&l" + this.playerNames.contains(player.getName()));
             return;
         }
 
@@ -78,6 +78,6 @@ public class Chat extends Command {
                 .replace("{chat}", player.getChatColour())
                 .replace("{message}", arguments);
 
-        Send.all(message, SmUtility.permissionPrefix + "." + this.section.getString("permission"));
+        MessageManager.all(message, SmUtility.permissionPrefix + "." + this.section.getString("permission"));
     }
 }

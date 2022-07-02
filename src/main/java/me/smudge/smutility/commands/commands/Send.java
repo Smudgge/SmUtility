@@ -16,8 +16,8 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import me.smudge.smutility.SmUtility;
+import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
-import me.smudge.smutility.utility.UtilityPlayer;
 
 import java.util.ArrayList;
 import java.util.Collections;

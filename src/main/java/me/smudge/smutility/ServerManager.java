@@ -9,11 +9,10 @@
      Author : Smudge
 */
 
-package me.smudge.smutility.utility;
+package me.smudge.smutility;
 
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.configuration.ConfigManager;
 
 import java.util.ArrayList;
@@ -80,6 +79,9 @@ public class ServerManager {
         return players;
     }
 
+    /**
+     * Used to get the rank permissions as a list
+     */
     private static ArrayList<String> getRankPermissions() {
         ArrayList<String> permissions = new ArrayList<>();
         for (String permission : ConfigManager.getCommands().getSection("list").getSection("list").getKeys()) {

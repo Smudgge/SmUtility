@@ -9,11 +9,10 @@
      Author : Smudge
 */
 
-package me.smudge.smutility.utility;
+package me.smudge.smutility;
 
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.configuration.ConfigManager;
 
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class UtilityPlayer {
      * @param message Message to send
      */
     public void sendMessage(String message) {
-        Send.player(this.player, message);
+        MessageManager.player(this.player, message);
     }
 
     /**
@@ -141,6 +140,7 @@ public class UtilityPlayer {
 
     /**
      * @return Chat colour
+     * If they are vanished it will be a different colour
      */
     public CharSequence getChatColour() {
         if (this.isVanished()) return ConfigManager.getMessages().getString("vanished");

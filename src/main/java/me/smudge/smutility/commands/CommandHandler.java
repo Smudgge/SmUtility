@@ -28,7 +28,7 @@ public class CommandHandler {
     /**
      * List of the commands
      */
-    private ArrayList<Command> commands = new ArrayList<>();
+    private static ArrayList<Command> commands;
 
     /**
      * Create a new instance of the command handler
@@ -36,18 +36,19 @@ public class CommandHandler {
      */
     public CommandHandler() {
 
-        this.commands.add(new Reload());
+        CommandHandler.commands = new ArrayList<>();
 
-        this.commands.add(new Alert());
-        this.commands.add(new Find());
-        this.commands.add(new Servers());
-        this.commands.add(new Report());
-        this.commands.add(new Send());
-        this.commands.add(new List());
+        CommandHandler.commands.add(new Reload());
+        CommandHandler.commands.add(new Alert());
+        CommandHandler.commands.add(new Find());
+        CommandHandler.commands.add(new Servers());
+        CommandHandler.commands.add(new Report());
+        CommandHandler.commands.add(new Send());
+        CommandHandler.commands.add(new List());
 
         // Staff chat
         for (ConfigurationSection section : ConfigManager.getCommands().getAllSections("chats")) {
-            this.commands.add(new Chat(section, section.getKey()));
+            CommandHandler.commands.add(new Chat(section, section.getKey()));
         }
     }
 
@@ -57,7 +58,7 @@ public class CommandHandler {
     public void setup() {
         CommandManager manager = SmUtility.getProxyServer().getCommandManager();
 
-        for (Command command : this.commands) {
+        for (Command command : CommandHandler.commands) {
             manager.register(
                     manager.metaBuilder(command.getName()).build(),
                     new BrigadierCommand(command.getCommandNode())
@@ -71,9 +72,20 @@ public class CommandHandler {
     public void unregister() {
         CommandManager manager = SmUtility.getProxyServer().getCommandManager();
 
-        for (Command command : this.commands) {
+        for (Command command : CommandHandler.commands) {
             manager.unregister(manager.metaBuilder(command.getName()).build());
             try {manager.unregister(command.getName());} catch (Exception ignored) {}
         }
+    }
+
+    /**
+     * Used to get all the chat commands
+     */
+    public static ArrayList<Chat> getChatCommands() {
+        ArrayList<Chat> temp = new ArrayList<>();
+        for (Command command : CommandHandler.commands) {
+            if (command instanceof Chat) temp.add((Chat) command);
+        }
+        return temp;
     }
 }

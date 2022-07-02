@@ -9,16 +9,15 @@
      Author : Smudge
 */
 
-package me.smudge.smutility.utility;
+package me.smudge.smutility;
 
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.Player;
-import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.configuration.ConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
-public class Send {
+public class MessageManager {
 
     /**
      * Used to convert a message
@@ -53,7 +52,7 @@ public class Send {
      * @param message Message to send
      */
     public static void player(Player player, String message) {
-        player.sendMessage(Send.convert(message));
+        player.sendMessage(MessageManager.convert(message));
     }
 
     /**
@@ -62,7 +61,7 @@ public class Send {
      */
     public static void all(String message) {
         for (Player player : SmUtility.getProxyServer().getAllPlayers()) {
-            player.sendMessage(Send.convert(message));
+            player.sendMessage(MessageManager.convert(message));
         }
     }
 
@@ -74,7 +73,7 @@ public class Send {
     public static void all(String message, String permission) {
         for (Player player : SmUtility.getProxyServer().getAllPlayers()) {
             if (!player.hasPermission(permission)) continue;
-            player.sendMessage(Send.convert(message));
+            player.sendMessage(MessageManager.convert(message));
         }
     }
 
