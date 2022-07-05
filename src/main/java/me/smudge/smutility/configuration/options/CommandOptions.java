@@ -14,6 +14,8 @@ package me.smudge.smutility.configuration.options;
 import me.smudge.smutility.configuration.ConfigurationSection;
 import me.smudge.smutility.configuration.configs.Commands;
 
+import java.util.ArrayList;
+
 /**
  * Represents the command's info
  * Used for getting from config
@@ -61,5 +63,15 @@ public class CommandOptions {
      */
     public ConfigurationSection getSection() {
         return this.commands.getSection(this.name);
+    }
+
+    /**
+     * Used to get command aliases
+     * @return Null if there are non
+     */
+    public ArrayList<String> getAliases() {
+        if (this.commands.getSection(this.name).get("aliases") == null) return null;
+        if (!(this.commands.getSection(this.name).get("aliases") instanceof ArrayList)) return null;
+        return (ArrayList<String>) this.commands.getSection(this.name).get("aliases");
     }
 }

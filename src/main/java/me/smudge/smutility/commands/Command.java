@@ -21,12 +21,16 @@ import com.velocitypowered.api.proxy.Player;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 
+import java.util.ArrayList;
+
 /**
  * Represents a command
  */
 public abstract class Command {
 
     public abstract String getName();
+
+    public abstract ArrayList<String> getAliases();
 
     public abstract String getPermission();
 
@@ -63,15 +67,15 @@ public abstract class Command {
     /**
      * Used to get the command literal {@link LiteralCommandNode}
      */
-    public LiteralCommandNode<CommandSource> getCommandNode() {
+    public LiteralCommandNode<CommandSource> getCommandNode(String commandName) {
         if (this.getArgumentName() == null) {
-            return LiteralArgumentBuilder.<CommandSource>literal(this.getName())
+            return LiteralArgumentBuilder.<CommandSource>literal(commandName)
                     .requires(ctx -> ctx.hasPermission(this.getParsedPermission()))
                     .executes(this::execute)
                     .build();
         }
 
-        return LiteralArgumentBuilder.<CommandSource>literal(this.getName())
+        return LiteralArgumentBuilder.<CommandSource>literal(commandName)
                 .requires(ctx -> ctx.hasPermission(this.getParsedPermission()))
                 .then(RequiredArgumentBuilder.<CommandSource, String>argument(this.getArgumentName(), StringArgumentType.greedyString())
                         .executes((this::execute))

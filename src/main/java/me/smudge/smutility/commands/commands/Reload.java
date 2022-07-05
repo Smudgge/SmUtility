@@ -16,10 +16,17 @@ import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
 import me.smudge.smutility.configuration.ConfigManager;
 
+import java.util.ArrayList;
+
 public class Reload extends Command {
     @Override
     public String getName() {
         return "smutilityreload";
+    }
+
+    @Override
+    public ArrayList<String> getAliases() {
+        return null;
     }
 
     @Override

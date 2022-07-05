@@ -51,6 +51,11 @@ public class Chat extends Command {
     }
 
     @Override
+    public ArrayList<String> getAliases() {
+        return (ArrayList<String>) this.section.get("aliases");
+    }
+
+    @Override
     public String getPermission() {
         return this.section.getString("permission");
     }

@@ -27,7 +27,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "smutility",
         name = "SmUtility",
-        version = "1.0.2",
+        version = "1.0.3",
         description = "A Velocity Utility Plugin",
         url = "https://smudgg.netlify.app",
         authors = {"Smudge"}

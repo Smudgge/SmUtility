@@ -31,6 +31,11 @@ public class Send extends Command {
     }
 
     @Override
+    public ArrayList<String> getAliases() {
+        return null;
+    }
+
+    @Override
     public String getPermission() {
         return "send";
     }

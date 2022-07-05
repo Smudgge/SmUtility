@@ -15,6 +15,8 @@ import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.configuration.ConfigManager;
 import me.smudge.smutility.configuration.ConfigurationSection;
 
+import java.util.ArrayList;
+
 /**
  * Represents a custom command
  * Making it easier to create a command from the config
@@ -29,6 +31,11 @@ public abstract class CustomCommand extends Command {
     @Override
     public String getName() {
         return ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getName();
+    }
+
+    @Override
+    public ArrayList<String> getAliases() {
+        return ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getAliases();
     }
 
     @Override

@@ -9,6 +9,10 @@ alert:
   # The commands name /alert
   name: 'alert'
 
+  # A list of other names for the command
+  # This can be put for all commands
+  aliases: ['broadcast']
+
   # The permission for using the command
   # smutility.alert
   permission: 'alert'
@@ -38,6 +42,7 @@ report:
 chats:
   StaffChat:
     name: 'sc'
+    aliases: ['staffchat']
     permission: 'staffChat'
 
     # {server} : The server they are on

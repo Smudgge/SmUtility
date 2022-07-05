@@ -61,8 +61,16 @@ public class CommandHandler {
         for (Command command : CommandHandler.commands) {
             manager.register(
                     manager.metaBuilder(command.getName()).build(),
-                    new BrigadierCommand(command.getCommandNode())
+                    new BrigadierCommand(command.getCommandNode(command.getName()))
             );
+
+            if (command.getAliases() == null) continue;
+            for (String alias : command.getAliases()) {
+                manager.register(
+                        manager.metaBuilder(alias).build(),
+                        new BrigadierCommand(command.getCommandNode(alias))
+                );
+            }
         }
     }
 
@@ -73,8 +81,10 @@ public class CommandHandler {
         CommandManager manager = SmUtility.getProxyServer().getCommandManager();
 
         for (Command command : CommandHandler.commands) {
-            manager.unregister(manager.metaBuilder(command.getName()).build());
-            try {manager.unregister(command.getName());} catch (Exception ignored) {}
+            manager.unregister(command.getName());
+
+            if (command.getAliases() == null) continue;
+            for (String alias : command.getAliases()) manager.unregister(alias);
         }
     }
 
