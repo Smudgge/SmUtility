@@ -24,6 +24,11 @@ public class Find extends CustomCommand {
     }
 
     @Override
+    protected boolean getRequireArguments() {
+        return true;
+    }
+
+    @Override
     public String getArgumentName() {
         return "player";
     }

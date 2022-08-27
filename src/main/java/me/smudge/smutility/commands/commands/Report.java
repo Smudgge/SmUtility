@@ -17,9 +17,15 @@ import me.smudge.smutility.commands.CustomCommand;
 import me.smudge.smutility.configuration.ConfigManager;
 
 public class Report extends CustomCommand {
+
     @Override
     protected String getConfigName() {
         return "report";
+    }
+
+    @Override
+    protected boolean getRequireArguments() {
+        return true;
     }
 
     @Override
@@ -30,10 +36,14 @@ public class Report extends CustomCommand {
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
-        MessageManager.all(
-                message.replace("{player}", player.getName()).replace("{message}", arguments),
-                ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee")
-        );
+        String parsedMessage = message.replace("{player}", player.getName()).replace("{message}", arguments);
+        String permission = ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
 
+        // If they are unable to see their own report, send it to them
+        if (!player.getPlayer().hasPermission(permission)) {
+            MessageManager.player(player.getPlayer(), parsedMessage);
+        }
+
+        MessageManager.all(parsedMessage, permission);
     }
 }

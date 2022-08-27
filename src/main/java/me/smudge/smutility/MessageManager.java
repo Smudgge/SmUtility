@@ -28,10 +28,31 @@ public class MessageManager {
     public static Component convert(String message) {
         String prefix = ConfigManager.getMessages().getPrefix();
 
-        return Component.text()
-                .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message
-                        .replace("{prefix}", prefix)))
-                .build();
+        if (message == null) {
+            SmUtility.getLogger().warn("Message is null! Please check messages.yml config for missing values.");
+            SmUtility.getLogger().warn(
+                    "If updating to 1.0.4 it may had been because this is missing :\n" +
+                    "  # Command messages\n" +
+                    "  reloaded: '{prefix} Reloaded all configs! <3'\n" +
+                    "  playerIsOffline: '{prefix} Player is offline'\n" +
+                    "  requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'\n" +
+                    "  ^^^^^^^"
+            );
+            message = "null";
+        }
+
+        try {
+            return Component.text()
+                    .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message
+                            .replace("{prefix}", prefix)))
+                    .build();
+        }
+        catch (Exception exception) {
+            SmUtility.getLogger().warn("Could not find prefix value in messages.yml!");
+            return Component.text()
+                    .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message))
+                    .build();
+        }
     }
 
     /**

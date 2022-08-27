@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Send extends Command {
+
     @Override
     public String getName() {
         return "send";

@@ -41,4 +41,8 @@ public class MessageOptions {
     public String getPlayerIsOffline() {
         return this.messages.getString("playerIsOffline");
     }
+
+    public String getRequiresArguments() {
+        return this.messages.getString("requiresArguments");
+    }
 }

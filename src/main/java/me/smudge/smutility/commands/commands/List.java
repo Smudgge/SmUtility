@@ -27,6 +27,11 @@ public class List extends CustomCommand {
     }
 
     @Override
+    protected boolean getRequireArguments() {
+        return false;
+    }
+
+    @Override
     public String getArgumentName() {
         return null;
     }

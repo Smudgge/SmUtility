@@ -23,6 +23,11 @@ public class Alert extends CustomCommand {
     }
 
     @Override
+    protected boolean getRequireArguments() {
+        return true;
+    }
+
+    @Override
     public String getArgumentName() {
         return "message";
     }
