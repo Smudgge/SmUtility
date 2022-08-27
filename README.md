@@ -107,8 +107,8 @@ vanished: '&#c0fce6'
 
 # Command messages
 reloaded: '{prefix} Reloaded all configs! <3'
-
 playerIsOffline: '{prefix} Player is offline'
+requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'
 
 # Make your servers colourised!
 # When ever the plugin mentions a server it will format it
