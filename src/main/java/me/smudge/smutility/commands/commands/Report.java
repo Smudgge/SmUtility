@@ -37,7 +37,7 @@ public class Report extends CustomCommand {
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
         String parsedMessage = message.replace("{player}", player.getName()).replace("{message}", arguments);
-        String permission = ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
+        String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
 
         // If they are unable to see their own report, send it to them
         if (!player.getPlayer().hasPermission(permission)) {

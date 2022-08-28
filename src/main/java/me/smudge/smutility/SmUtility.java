@@ -20,6 +20,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import me.smudge.smutility.commands.CommandHandler;
 import me.smudge.smutility.configuration.ConfigManager;
+import me.smudge.smutility.database.PlayerHistoryDatabase;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -48,6 +49,9 @@ public class SmUtility {
 
         // Setup configs
         new ConfigManager(folder.toFile());
+
+        // Setup database
+        new PlayerHistoryDatabase(folder.toFile());
 
     }
 
