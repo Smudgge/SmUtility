@@ -8,17 +8,18 @@ Main Github Page: https://github.com/smuddgge/SmUtility
 
 ## Commands
 
-| Default Command       | Default Permission                           | Usage                                          |
-|-----------------------|----------------------------------------------|------------------------------------------------|
-| `/alert <message>`    | `smutility.alert`                            | Sends a message to everyone on the servers     |
-| `/sc` | `smutility.staffChat`                        | Toggles the staff chat                         |
-| `/sc <message>`       | `smutility.staffChat`                        | Sends a message to players with the permission |
-| `/find <player name>` | `smutility.find`                             | Used to find a player on the servers           |                  
-| `/list` | `smutility.list`                             | List of players on the servers                 |
-| `/smutilityreload` | `smutility.reload`                           | Used to reload the commands and messages       |
-| `/report <message>` | `smutility.report.use` `smutility.report.see` | Used to report somthing to staff               |
-| `/send <from> <to>` | `smutility.send` | Used to teleport players to a server           |
+| Default Command       | Default Permission                           | Usage                                           |
+|-----------------------|----------------------------------------------|-------------------------------------------------|
+| `/alert <message>`    | `smutility.alert`                            | Sends a message to everyone on the servers      |
+| `/sc` | `smutility.staffChat`                        | Toggles the staff chat                          |
+| `/sc <message>`       | `smutility.staffChat`                        | Sends a message to players with the permission  |
+| `/find <player name>` | `smutility.find`                             | Used to find a player on the servers            |                  
+| `/list` | `smutility.list`                             | List of players on the servers                  |
+| `/smutilityreload` | `smutility.reload`                           | Used to reload the commands and messages        |
+| `/report <message>` | `smutility.report.use` `smutility.report.see` | Used to report somthing to staff                |
+| `/send <from> <to>` | `smutility.send` | Used to teleport players to a server            |
 | `/servers` | `smutility.servers` | Used to see how many players are on the servers |
+| `/history <player name> | `smutility.history` | Used to see what servers a player has been on   |
 
 ## Configuration
 
