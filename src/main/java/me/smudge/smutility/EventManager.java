@@ -53,9 +53,9 @@ public class EventManager {
     /**
      * When a player leaves a server
      */
-    public static void onPlayerLeave(KickedFromServerEvent event) {
+    public static void onPlayerLeave(DisconnectEvent event) {
         String playerName = event.getPlayer().getGameProfile().getName();
-        RegisteredServer server = event.getServer();
+        RegisteredServer server = event.getPlayer().getCurrentServer().get().getServer();
 
         DatabaseManager.getPlayerHistoryDatabase().addHistory(playerName, server.getServerInfo().getName(), PlayerHistoryEvent.LEAVE);
     }

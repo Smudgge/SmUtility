@@ -10,6 +10,7 @@ import me.smudge.smutility.database.HistoryCollection;
 import me.smudge.smutility.database.PlayerHistoryEvent;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
 
 public class History extends CustomCommand {
@@ -33,15 +34,28 @@ public class History extends CustomCommand {
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
         CommandOptions options = ConfigManager.getCommands().getCommandInfo("history");
 
+        if (options.getSection().getBoolean("disable")) {
+            player.sendMessage("&7&l> &7This feature is disabled, to enable set &fdisable &7to &ffalse");
+            return;
+        }
+
         StringBuilder builder = new StringBuilder();
 
         builder.append(options.getSection().getString("header").replace("{player}", arguments)).append("\n\n");
 
-        int limit = options.getSection().getInt("limit");
+        ArrayList<Map<String, Object>> collections = DatabaseManager.getPlayerHistoryDatabase().getCollections(new HistoryCollection(), "playerName", arguments);
+        ArrayList<Map<String, Object>> limited = new ArrayList<>();
 
-        for (Map<String, Object> map : DatabaseManager.getPlayerHistoryDatabase().getCollections(new HistoryCollection(), "playerName", arguments)) {
-            if (limit == 0) continue;
+        int ignoreAmount = collections.size() - options.getSection().getInt("limit");
+        for (Map<String, Object> entry : collections) {
+            if (ignoreAmount >= 0) {
+                ignoreAmount -= 1;
+                continue;
+            }
+            limited.add(entry);
+        }
 
+        for (Map<String, Object> map : limited) {
             builder.append(
                     options.getSection().getString("format")
                             .replace("{event}", PlayerHistoryEvent.valueOf((String) map.get("event")).toSymbol())
@@ -49,8 +63,6 @@ public class History extends CustomCommand {
                             .replace("{date}", (String) map.get("date"))
             );
             builder.append("\n");
-
-            limit -= 1;
         }
 
         builder.append("\n").append(options.getSection().getString("footer"));

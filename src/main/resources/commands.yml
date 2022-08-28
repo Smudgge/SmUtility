@@ -65,6 +65,10 @@ list:
       section: '&7- &f{player} {server}'
 
 history:
+  # Should player history be disabled?
+  # This will stop the plugin connecting to a database
+  disable: false
+
   name: 'history'
   permission: 'history'
   header: '&8&m&l---&r &e&l{player} &6&lHistory &8&m&l---'

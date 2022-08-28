@@ -73,6 +73,12 @@ public class ConfigurationSection implements ConfigurationSelection {
         return null;
     }
 
+    @Override
+    public boolean getBoolean(String path) {
+        if (this.data.get(path) instanceof Boolean) return (boolean) this.data.get(path);
+        return false;
+    }
+
     public String getKey() {
         return this.key;
     }

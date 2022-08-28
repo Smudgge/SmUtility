@@ -1,13 +1,12 @@
 package me.smudge.smutility.database;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
+import me.smudge.smutility.configuration.ConfigManager;
 
 import java.io.File;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Represents a database
@@ -38,6 +37,10 @@ public class Database {
     public Database(File folder, String fileName) {
         this.folder = folder;
         this.fileName = fileName;
+
+        // If database is disabled
+        if (ConfigManager.getCommands().getCommandInfo("history").getSection().getBoolean("disable")) return;
+
         this.setup();
     }
 
@@ -79,6 +82,7 @@ public class Database {
 
         // Connected to the database
         this.usingDatabase = true;
+        SmUtility.getProxyServer().getConsoleCommandSource().sendMessage(MessageManager.convert("&aDatabase Connected!"));
     }
 
     /**

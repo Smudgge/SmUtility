@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * Represents a config file
  */
-public class Configuration implements ConfigurationSelection{
+public class Configuration implements ConfigurationSelection {
 
     /**
      * The configuration file
@@ -125,5 +125,11 @@ public class Configuration implements ConfigurationSelection{
     public ArrayList<Integer> getIntArray(String path) {
         if (this.data.get(path) instanceof ArrayList) return (ArrayList<Integer>) this.data.get(path);
         return null;
+    }
+
+    @Override
+    public boolean getBoolean(String path) {
+        if (this.data.get(path) instanceof Boolean) return (boolean) this.data.get(path);
+        return false;
     }
 }

@@ -61,4 +61,11 @@ public interface ConfigurationSelection {
      * @return Array of integers
      */
     ArrayList<Integer> getIntArray(String path);
+
+    /**
+     * Used to get a boolean from the config
+     * @param path The location of the key
+     * @return Boolean value
+     */
+    boolean getBoolean(String path);
 }

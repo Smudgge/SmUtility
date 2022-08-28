@@ -89,6 +89,20 @@ list:
     admin:
       header: '&7[&f{amount}&7] &c&lAdmins'
       section: '&7- &f{player} {server}'
+
+history:
+  # Should player history be disabled?
+  # This will stop the plugin connecting to a database
+  disable: false
+
+  name: 'history'
+  permission: 'history'
+  header: '&8&m&l---&r &e&l{player} &6&lHistory &8&m&l---'
+  # {event} = JOIN, LEAVE
+  format: '&r{event} &f{server} &7{date}'
+  footer: '&8&m&l---------------------'
+  # Amount of history to show
+  limit: 10
 ```
 
 Messages.yml
