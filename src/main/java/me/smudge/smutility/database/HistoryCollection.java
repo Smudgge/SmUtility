@@ -5,11 +5,10 @@ public class HistoryCollection extends Collection {
     /**
      * The date and time
      */
-    public String date;
+    public String date = null;
 
     /**
      * The server that was joined
      */
-    public String server = "Testing";
-
+    public String server = null;
 }

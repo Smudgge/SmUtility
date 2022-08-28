@@ -44,6 +44,16 @@ public class Database {
      * Used to set up the connection to the database
      */
     private void setup() {
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+        }
+        catch (ClassNotFoundException exception) {
+            SmUtility.getLogger().warn("Unable to connect to the database!");
+            exception.printStackTrace();
+            this.usingDatabase = false;
+        }
+
         // Create database directory if it doesn't exist
         File file = new File(folder, File.separator);
         file.mkdir();
