@@ -19,7 +19,7 @@ Main Github Page: https://github.com/smuddgge/SmUtility
 | `/report <message>` | `smutility.report.use` `smutility.report.see` | Used to report somthing to staff                |
 | `/send <from> <to>` | `smutility.send` | Used to teleport players to a server            |
 | `/servers` | `smutility.servers` | Used to see how many players are on the servers |
-| `/history <player name> | `smutility.history` | Used to see what servers a player has been on   |
+| `/history <player name>` | `smutility.history` | Used to see what servers a player has been on   |
 
 ## Configuration
 
