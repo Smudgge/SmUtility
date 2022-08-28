@@ -24,7 +24,7 @@ public class Report extends CustomCommand {
     }
 
     @Override
-    protected boolean getRequireArguments() {
+    protected boolean requiresArguments() {
         return true;
     }
 

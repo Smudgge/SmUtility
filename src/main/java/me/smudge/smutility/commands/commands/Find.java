@@ -24,7 +24,7 @@ public class Find extends CustomCommand {
     }
 
     @Override
-    protected boolean getRequireArguments() {
+    protected boolean requiresArguments() {
         return true;
     }
 

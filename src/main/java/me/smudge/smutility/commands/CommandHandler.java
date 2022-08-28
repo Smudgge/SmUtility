@@ -45,6 +45,7 @@ public class CommandHandler {
         CommandHandler.commands.add(new Report());
         CommandHandler.commands.add(new Send());
         CommandHandler.commands.add(new List());
+        CommandHandler.commands.add(new History());
 
         // Staff chat
         for (ConfigurationSection section : ConfigManager.getCommands().getAllSections("chats")) {

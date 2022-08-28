@@ -23,7 +23,7 @@ public class Alert extends CustomCommand {
     }
 
     @Override
-    protected boolean getRequireArguments() {
+    protected boolean requiresArguments() {
         return true;
     }
 

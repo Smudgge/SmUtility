@@ -11,9 +11,15 @@
 
 package me.smudge.smutility;
 
+import com.velocitypowered.api.event.connection.DisconnectEvent;
+import com.velocitypowered.api.event.player.KickedFromServerEvent;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
+import com.velocitypowered.api.event.player.ServerPostConnectEvent;
+import com.velocitypowered.api.proxy.server.RegisteredServer;
 import me.smudge.smutility.commands.CommandHandler;
 import me.smudge.smutility.commands.commands.Chat;
+import me.smudge.smutility.database.DatabaseManager;
+import me.smudge.smutility.database.PlayerHistoryEvent;
 
 public class EventManager {
 
@@ -32,5 +38,25 @@ public class EventManager {
 
             return;
         }
+    }
+
+    /**
+     * When a player connects to the server
+     */
+    public static void onPlayerJoin(ServerPostConnectEvent event) {
+        String playerName = event.getPlayer().getGameProfile().getName();
+        RegisteredServer server  = event.getPlayer().getCurrentServer().get().getServer();
+
+        DatabaseManager.getPlayerHistoryDatabase().addHistory(playerName, server.getServerInfo().getName(), PlayerHistoryEvent.JOIN);
+    }
+
+    /**
+     * When a player leaves a server
+     */
+    public static void onPlayerLeave(KickedFromServerEvent event) {
+        String playerName = event.getPlayer().getGameProfile().getName();
+        RegisteredServer server = event.getServer();
+
+        DatabaseManager.getPlayerHistoryDatabase().addHistory(playerName, server.getServerInfo().getName(), PlayerHistoryEvent.LEAVE);
     }
 }

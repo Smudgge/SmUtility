@@ -31,7 +31,7 @@ public abstract class CustomCommand extends Command {
     /**
      * If the command requires arguments
      */
-    protected abstract boolean getRequireArguments();
+    protected abstract boolean requiresArguments();
 
     @Override
     public String getName() {
@@ -55,7 +55,7 @@ public abstract class CustomCommand extends Command {
     public void onCommandRun(UtilityPlayer player, String arguments) {
 
         // If the command requires arguments and there are non
-        if (this.getRequireArguments() && arguments == null) {
+        if (this.requiresArguments() && arguments == null) {
             player.sendMessage(ConfigManager.getMessages().getMessages().getRequiresArguments());
             return;
         }
