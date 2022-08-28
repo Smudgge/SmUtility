@@ -47,11 +47,8 @@ public class Database {
 
         try {
             Class.forName("org.sqlite.JDBC");
-        }
-        catch (ClassNotFoundException exception) {
-            SmUtility.getLogger().warn("Unable to connect to the database!");
+        } catch (ClassNotFoundException exception) {
             exception.printStackTrace();
-            this.usingDatabase = false;
         }
 
         // Create database directory if it doesn't exist

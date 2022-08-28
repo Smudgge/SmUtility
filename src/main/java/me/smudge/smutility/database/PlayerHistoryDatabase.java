@@ -10,7 +10,7 @@ public class PlayerHistoryDatabase extends Database {
      * @param folder   The folder the database will be in
      */
     public PlayerHistoryDatabase(File folder) {
-        super(folder, "playerHistory");
+        super(folder, "playerhistory");
 
         this.createCollection(new HistoryCollection());
     }
