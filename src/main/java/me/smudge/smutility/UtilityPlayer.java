@@ -131,7 +131,7 @@ public class UtilityPlayer {
         if (this.player == null) return null;
 
         for (Map.Entry<String, String> entry : ConfigManager.getMessages().getRanks().entrySet()) {
-            if (!this.player.hasPermission(entry.getKey())) continue;
+            if (!this.player.hasPermission("smutility.rank." + entry.getKey())) continue;
             return entry.getValue();
         }
 
