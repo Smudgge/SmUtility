@@ -14,7 +14,6 @@ package me.smudge.smutility;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
-import com.velocitypowered.api.event.player.KickedFromServerEvent;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.event.player.ServerPostConnectEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -24,7 +23,6 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import me.smudge.smutility.commands.CommandHandler;
 import me.smudge.smutility.configuration.ConfigManager;
 import me.smudge.smutility.database.DatabaseManager;
-import me.smudge.smutility.database.PlayerHistoryDatabase;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -32,7 +30,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "smutility",
         name = "SmUtility",
-        version = "1.1.0",
+        version = "1.1.1",
         description = "A Velocity Utility Plugin",
         url = "https://smudgg.netlify.app",
         authors = {"Smudge"}

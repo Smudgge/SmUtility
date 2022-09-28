@@ -10,7 +10,6 @@ import me.smudge.smutility.database.HistoryCollection;
 import me.smudge.smutility.database.PlayerHistoryEvent;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 
 public class History extends CustomCommand {

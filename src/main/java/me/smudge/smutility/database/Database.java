@@ -6,7 +6,10 @@ import me.smudge.smutility.configuration.ConfigManager;
 
 import java.io.File;
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Represents a database

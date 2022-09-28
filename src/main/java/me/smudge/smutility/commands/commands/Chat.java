@@ -15,6 +15,7 @@ import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
+import me.smudge.smutility.configuration.ConfigManager;
 import me.smudge.smutility.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
@@ -69,6 +70,11 @@ public class Chat extends Command {
     public void onCommandRun(UtilityPlayer player, String arguments) {
 
         if (arguments == null) {
+            if (ConfigManager.getCommands().getBoolean("1.19 chat")) {
+                player.sendMessage("&7&l> &7Canceling velocity chat events on 1.19 is not allowed therefor clients cannot toggle chats.");
+                return;
+            }
+
             if (this.playerNames.contains(player.getName())) this.playerNames.remove(player.getName());
             else this.playerNames.add(player.getName());
 

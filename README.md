@@ -31,6 +31,10 @@ Commands.yml
 # Author : Smudge
 # -----------------------------------------
 
+# 1.19 chat doesn't let velocity cancel messages being sent, there for the toggle
+# for chats cannot be used. To disable the chat toggle set this to true
+1.19 chat: true
+
 alert:
 
   # The commands name /alert
