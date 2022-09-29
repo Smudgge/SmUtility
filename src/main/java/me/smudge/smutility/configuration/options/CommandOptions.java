@@ -25,12 +25,12 @@ public class CommandOptions {
     /**
      * Data loaded from the yaml
      */
-    private Commands commands;
+    private final Commands commands;
 
     /**
      * The command name
      */
-    private String name;
+    private final String name;
 
     public CommandOptions(Commands commands, String name) {
         this.commands = commands;
@@ -67,6 +67,7 @@ public class CommandOptions {
 
     /**
      * Used to get command aliases
+     *
      * @return Null if there are non
      */
     public ArrayList<String> getAliases() {

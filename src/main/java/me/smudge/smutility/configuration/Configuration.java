@@ -53,6 +53,7 @@ public class Configuration implements ConfigurationSelection {
 
     /**
      * Loads the configuration file to the yaml instance
+     *
      * @return True if successful
      */
     public boolean load() {
@@ -74,7 +75,7 @@ public class Configuration implements ConfigurationSelection {
         try (InputStream inputStream = new FileInputStream(this.file)) {
 
             Yaml yaml = new Yaml();
-            this.data = (Map<String, Object>) yaml.load(inputStream);
+            this.data = yaml.load(inputStream);
 
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -95,7 +96,8 @@ public class Configuration implements ConfigurationSelection {
 
     @Override
     public ConfigurationSection getSection(String path) {
-        if (this.data.get(path) instanceof Map) return new ConfigurationSection((Map<String, Object>) this.data.get(path));
+        if (this.data.get(path) instanceof Map)
+            return new ConfigurationSection((Map<String, Object>) this.data.get(path));
         return null;
     }
 

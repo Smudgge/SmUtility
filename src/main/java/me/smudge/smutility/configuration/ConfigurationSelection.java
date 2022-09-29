@@ -15,13 +15,15 @@ public interface ConfigurationSelection {
 
     /**
      * Used to set a value to the config
-     * @param path The location of the key
+     *
+     * @param path  The location of the key
      * @param value The value to set
      */
     void set(String path, Object value);
 
     /**
      * Used to get any object
+     *
      * @param path The location of the key
      * @return Object
      */
@@ -29,6 +31,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get a config section
+     *
      * @param path The location of the key
      * @return Config section
      */
@@ -36,6 +39,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get all config sections
+     *
      * @param path The location of the key
      * @return Config sections
      */
@@ -43,6 +47,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get a string from the config
+     *
      * @param path The location of the key
      * @return String value
      */
@@ -50,6 +55,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get an integer from the config
+     *
      * @param path The location of the key
      * @return Int value
      */
@@ -57,6 +63,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get an array of integers from the config
+     *
      * @param path The location of the key
      * @return Array of integers
      */
@@ -64,6 +71,7 @@ public interface ConfigurationSelection {
 
     /**
      * Used to get a boolean from the config
+     *
      * @param path The location of the key
      * @return Boolean value
      */

@@ -9,7 +9,8 @@ public class PlayerHistoryDatabase extends Database {
     /**
      * Used to create a database object
      * Used to create a {@link PlayerHistoryDatabase}
-     * @param folder   The folder the database will be in
+     *
+     * @param folder The folder the database will be in
      */
     public PlayerHistoryDatabase(File folder) {
         super(folder, "playerhistory");
@@ -19,9 +20,10 @@ public class PlayerHistoryDatabase extends Database {
 
     /**
      * Used to add new history
+     *
      * @param playerName Players Name
      * @param serverName Server involved
-     * @param event Event that has occurred
+     * @param event      Event that has occurred
      */
     public void addHistory(String playerName, String serverName, PlayerHistoryEvent event) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH;mm;ss");

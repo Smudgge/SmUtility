@@ -40,6 +40,7 @@ public abstract class Command {
 
     /**
      * When the command is executed
+     *
      * @param commandContext The context of the command
      */
     public int execute(CommandContext<CommandSource> commandContext) {
@@ -49,8 +50,10 @@ public abstract class Command {
 
         if (source instanceof Player) player = (Player) source;
         try {
-            if (this.getArgumentName() != null) arguments = commandContext.getArgument(this.getArgumentName(), String.class);
-        } catch (Exception ignored) {}
+            if (this.getArgumentName() != null)
+                arguments = commandContext.getArgument(this.getArgumentName(), String.class);
+        } catch (Exception ignored) {
+        }
 
         this.onCommandRun(new UtilityPlayer(player), arguments);
 

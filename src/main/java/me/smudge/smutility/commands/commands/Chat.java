@@ -39,6 +39,7 @@ public class Chat extends Command {
 
     /**
      * New instance of this command
+     *
      * @param section Chat section
      */
     public Chat(ConfigurationSection section, String name) {
@@ -83,7 +84,7 @@ public class Chat extends Command {
         }
 
         String message = this.section.getString("format")
-                .replace("{server}", player.getServerFormated())
+                .replace("{server}", player.getServerFormatted())
                 .replace("{rank}", player.getRank())
                 .replace("{name}", player.getName())
                 .replace("{chat}", player.getChatColour())

@@ -45,8 +45,8 @@ public class Find extends CustomCommand {
         String serverName = playerToFind.getServer().getServerInfo().getName();
 
         player.sendMessage(message
-                        .replace("{player}", arguments)
-                        .replace("{server}", ServerManager.format(serverName))
+                .replace("{player}", arguments)
+                .replace("{server}", ServerManager.format(serverName))
         );
     }
 }

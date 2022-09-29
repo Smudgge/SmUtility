@@ -24,6 +24,7 @@ public class Commands extends Configuration {
     /**
      * Creates a new {@link Configuration}
      * Creates a new instance of the main config
+     *
      * @param folder Folder of the config
      */
     public Commands(File folder) {
@@ -33,6 +34,7 @@ public class Commands extends Configuration {
 
     /**
      * Used to get command info
+     *
      * @param path Config path
      * @return The command info
      */

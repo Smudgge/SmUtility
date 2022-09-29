@@ -69,9 +69,10 @@ public abstract class CustomCommand extends Command {
 
     /**
      * When this command is run
-     * @param player Player that ran the command
+     *
+     * @param player    Player that ran the command
      * @param arguments Arguments
-     * @param message Config message
+     * @param message   Config message
      */
     protected abstract void onCommandRun(UtilityPlayer player, String arguments, String message);
 

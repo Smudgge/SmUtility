@@ -25,6 +25,7 @@ public class Messages extends Configuration {
     /**
      * Creates a new {@link Configuration}
      * Creates a new instance of the messages
+     *
      * @param folder Config folder
      */
     public Messages(File folder) {
@@ -35,7 +36,7 @@ public class Messages extends Configuration {
     /**
      * @return The plugins prefix
      */
-    public String getPrefix(){
+    public String getPrefix() {
         return this.getString("prefix");
     }
 

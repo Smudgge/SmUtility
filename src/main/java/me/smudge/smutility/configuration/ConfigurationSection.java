@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class ConfigurationSection implements ConfigurationSelection {
 
-    private Map<String, Object> data;
+    private final Map<String, Object> data;
 
     private String key;
 
@@ -41,7 +41,8 @@ public class ConfigurationSection implements ConfigurationSelection {
 
     @Override
     public ConfigurationSection getSection(String path) {
-        if (this.data.get(path) instanceof Map) return new ConfigurationSection((Map<String, Object>) this.data.get(path));
+        if (this.data.get(path) instanceof Map)
+            return new ConfigurationSection((Map<String, Object>) this.data.get(path));
         return null;
     }
 

@@ -11,6 +11,7 @@ public class DatabaseManager {
 
     /**
      * Used to initialise databases
+     *
      * @param folder Parent folder
      */
     public DatabaseManager(File folder) {

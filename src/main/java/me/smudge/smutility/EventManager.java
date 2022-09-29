@@ -44,7 +44,7 @@ public class EventManager {
      */
     public static void onPlayerJoin(ServerPostConnectEvent event) {
         String playerName = event.getPlayer().getGameProfile().getName();
-        RegisteredServer server  = event.getPlayer().getCurrentServer().get().getServer();
+        RegisteredServer server = event.getPlayer().getCurrentServer().get().getServer();
 
         DatabaseManager.getPlayerHistoryDatabase().addHistory(playerName, server.getServerInfo().getName(), PlayerHistoryEvent.JOIN);
     }

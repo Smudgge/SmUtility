@@ -80,15 +80,11 @@ public class Send extends Command {
 
         if (location.equals("@a")) {
             return new ArrayList<>(proxyServer.getAllPlayers());
-        }
-
-        else if (location.startsWith("#")) {
+        } else if (location.startsWith("#")) {
             Optional<RegisteredServer> server = proxyServer.getServer(location.substring(1));
 
             if (server.isPresent()) return new ArrayList<>(server.get().getPlayersConnected());
-        }
-
-        else {
+        } else {
             Optional<Player> player = proxyServer.getPlayer(location);
 
             if (player.isPresent()) return Collections.singletonList(player.get());
@@ -102,9 +98,7 @@ public class Send extends Command {
 
         if (location.startsWith("#")) {
             return proxyServer.getServer(location.substring(1));
-        }
-
-        else {
+        } else {
             Optional<Player> player = proxyServer.getPlayer(location);
 
             if (player.isPresent()) {

@@ -25,6 +25,7 @@ public class MessageOptions {
 
     /**
      * Create a new instance of the options
+     *
      * @param messages Message config instnace
      */
     public MessageOptions(Messages messages) {

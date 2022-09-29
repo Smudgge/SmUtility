@@ -34,7 +34,8 @@ public class Database {
 
     /**
      * Used to create a database object
-     * @param folder The folder the database will be in
+     *
+     * @param folder   The folder the database will be in
      * @param fileName The file name of the database
      */
     public Database(File folder, String fileName) {
@@ -75,8 +76,7 @@ public class Database {
                 this.usingDatabase = false;
                 return;
             }
-        }
-        catch (SQLException exception) {
+        } catch (SQLException exception) {
             SmUtility.getLogger().warn("Unable to connect to the database!");
             exception.printStackTrace();
             this.usingDatabase = false;
@@ -90,6 +90,7 @@ public class Database {
 
     /**
      * Used to execute a statement
+     *
      * @param sql Statement to execute
      */
     private void executeStatement(String sql) {
@@ -101,8 +102,7 @@ public class Database {
         try {
             Statement statement = connection.createStatement();
             statement.execute(sql);
-        }
-        catch (SQLException exception) {
+        } catch (SQLException exception) {
             SmUtility.getLogger().warn("Unable to execute sql :");
             SmUtility.getLogger().warn(sql);
             exception.printStackTrace();
@@ -112,6 +112,7 @@ public class Database {
 
     /**
      * Used to execute a query and return the results
+     *
      * @param sql Statement to execute
      * @return Result set
      */
@@ -124,8 +125,7 @@ public class Database {
         try {
             Statement statement = connection.createStatement();
             return statement.executeQuery(sql);
-        }
-        catch (SQLException exception) {
+        } catch (SQLException exception) {
             SmUtility.getLogger().warn("Unable to execute sql :");
             SmUtility.getLogger().warn(sql);
             exception.printStackTrace();
@@ -137,6 +137,7 @@ public class Database {
 
     /**
      * Used to create a new collection structure in the database
+     *
      * @param collection Collection to create
      */
     public void createCollection(Collection collection) {
@@ -163,9 +164,10 @@ public class Database {
 
     /**
      * Get all collections with key and value
+     *
      * @param collection Collection structure to search
-     * @param key Key to look for
-     * @param value Value to look for
+     * @param key        Key to look for
+     * @param value      Value to look for
      * @return List of collections as maps
      */
     public ArrayList<Map<String, Object>> getCollections(Collection collection, String key, String value) {
@@ -176,7 +178,7 @@ public class Database {
         if (results == null) return null;
 
         try {
-            while(results.next()) {
+            while (results.next()) {
                 Map<String, Object> temp = new HashMap<>();
 
                 for (Map.Entry<String, Object> record : collection.getAsMap().entrySet()) {
@@ -202,6 +204,7 @@ public class Database {
 
     /**
      * Used to add a collection
+     *
      * @param collection Collection to add
      */
     public void addCollection(Collection collection) {

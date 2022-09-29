@@ -22,6 +22,7 @@ public class MessageManager {
     /**
      * Used to convert a message
      * Updating the prefix and deserializing
+     *
      * @param message The message to convert
      * @return Converted message
      */
@@ -32,11 +33,11 @@ public class MessageManager {
             SmUtility.getLogger().warn("Message is null! Please check messages.yml config for missing values.");
             SmUtility.getLogger().warn(
                     "If updating to 1.0.4 it may had been because this is missing :\n" +
-                    "  # Command messages\n" +
-                    "  reloaded: '{prefix} Reloaded all configs! <3'\n" +
-                    "  playerIsOffline: '{prefix} Player is offline'\n" +
-                    "  requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'\n" +
-                    "  ^^^^^^^"
+                            "  # Command messages\n" +
+                            "  reloaded: '{prefix} Reloaded all configs! <3'\n" +
+                            "  playerIsOffline: '{prefix} Player is offline'\n" +
+                            "  requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'\n" +
+                            "  ^^^^^^^"
             );
             message = "null";
         }
@@ -46,8 +47,7 @@ public class MessageManager {
                     .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message
                             .replace("{prefix}", prefix)))
                     .build();
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             SmUtility.getLogger().warn("Could not find prefix value in messages.yml!");
             return Component.text()
                     .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message))
@@ -58,6 +58,7 @@ public class MessageManager {
     /**
      * Used to convert a message
      * Updating the prefix
+     *
      * @param message The message to convert
      * @return Converted message
      */
@@ -69,7 +70,8 @@ public class MessageManager {
 
     /**
      * Used to send a player a message
-     * @param player Player to send message
+     *
+     * @param player  Player to send message
      * @param message Message to send
      */
     public static void player(Player player, String message) {
@@ -78,6 +80,7 @@ public class MessageManager {
 
     /**
      * Used to send a message to all players online
+     *
      * @param message The message to send
      */
     public static void all(String message) {
@@ -88,7 +91,8 @@ public class MessageManager {
 
     /**
      * Used to send a message to players with permission
-     * @param message Message to send
+     *
+     * @param message    Message to send
      * @param permission Permission to check for
      */
     public static void all(String message, String permission) {
@@ -100,6 +104,7 @@ public class MessageManager {
 
     /**
      * Used to log a message in the console
+     *
      * @param message Message to log
      */
     public static void log(String message) {
@@ -112,14 +117,16 @@ public class MessageManager {
      */
     public static void logHeader() {
         String message =
-                "&a       _____           _    _ _   _ _     %" +
-                "&a      / ____|         | |  | | | (_) |    %" +
-                "&a     | (___  _ __ ___ | |  | | |_ _| |___ %" +
-                "&a      \\___ \\| '_ ` _ \\| |  | | __| | / __|%" +
-                "&a      ____) | | | | | | |__| | |_| | \\__ \\%" +
-                "&a     |_____/|_| |_| |_|\\____/ \\__|_|_|___/%" +
-                "%" +
-                "     &7By Smudge         &7Version " + SmUtility.class.getAnnotation(Plugin.class).version();
+                "&a   _____           _    _ _   _ _ _ _         %" +
+                        "&a  / ____|         | |  | | | (_) (_) |       %" +
+                        "&a | (___  _ __ ___ | |  | | |_ _| |_| |_ _   _ %" +
+                        "&a  \\___ \\| '_ ` _ \\| |  | | __| | | | __| | | |%" +
+                        "&a  ____) | | | | | | |__| | |_| | | | |_| |_| |%" +
+                        "&a |_____/|_| |_| |_|\\____/ \\__|_|_|_|\\__|\\__, |%" +
+                        "&a                                         __/ |%" +
+                        "&a                                        |___/%" +
+                        "%" +
+                        "     &7By Smudge         &7Version " + SmUtility.class.getAnnotation(Plugin.class).version();
 
         for (String string : message.split("%")) {
             SmUtility.getProxyServer().getConsoleCommandSource().sendMessage(convert(string));

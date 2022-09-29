@@ -13,10 +13,11 @@ package me.smudge.smutility.commands.commands;
 
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import me.smudge.smutility.ServerManager;
-import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
 import me.smudge.smutility.configuration.ConfigManager;
+
+import java.util.ArrayList;
 
 public class Servers extends CustomCommand {
 
@@ -39,25 +40,46 @@ public class Servers extends CustomCommand {
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
         StringBuilder stringBuilder = new StringBuilder();
 
+        // Append the header
         stringBuilder.append(ConfigManager.getCommands().getCommandInfo("servers").getSection().getString("header"));
         stringBuilder.append("&r\n\n");
 
-        for (RegisteredServer server : SmUtility.getProxyServer().getAllServers()) {
+        // Get the order of servers
+        ArrayList<String> order = (ArrayList<String>) ConfigManager.getCommands().getCommandInfo("servers").getSection().get("order");
 
-            String name = ServerManager.format(server.getServerInfo().getName());
-            int amountOfPlayers = ServerManager.getPlayersNotVanishable(server).size();
-            String row = ConfigManager.getCommands().getCommandInfo("servers").getSection().getString("server");
+        // Loop though all the servers in the order list
+        for (String serverName : order) {
 
-            stringBuilder.append(row
-                    .replace("{server}", name)
-                    .replace("{online}", Integer.toString(amountOfPlayers))
-            );
-            stringBuilder.append("\n");
+            RegisteredServer server = ServerManager.getServer(serverName);
+
+            // If the server exists
+            if (server == null) continue;
+
+            this.appendServer(stringBuilder, server);
         }
 
         stringBuilder.append("\n");
         stringBuilder.append(ConfigManager.getCommands().getCommandInfo("servers").getSection().getString("footer"));
 
         player.sendMessage(stringBuilder.toString());
+    }
+
+    /**
+     * Used to append a server to the string builder
+     *
+     * @param builder String builder
+     * @param server  The registered server
+     */
+    private void appendServer(StringBuilder builder, RegisteredServer server) {
+        String name = ServerManager.format(server.getServerInfo().getName());
+        int amountOfPlayers = ServerManager.getPlayersNotVanishable(server).size();
+        String format = ConfigManager.getCommands().getCommandInfo("servers").getSection().getString("server");
+
+        builder.append(format
+                .replace("{server}", name)
+                .replace("{online}", Integer.toString(amountOfPlayers))
+        );
+
+        builder.append("\n");
     }
 }

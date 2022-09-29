@@ -33,6 +33,7 @@ public class UtilityPlayer {
 
     /**
      * Used to create a new utility player
+     *
      * @param player Player to cast to
      */
     public UtilityPlayer(Player player) {
@@ -42,6 +43,7 @@ public class UtilityPlayer {
 
     /**
      * Used to create a new utility player
+     *
      * @param playerName The players name
      */
     public UtilityPlayer(String playerName) {
@@ -51,6 +53,7 @@ public class UtilityPlayer {
 
     /**
      * Used to get the player instance
+     *
      * @return Null if they are offline
      */
     public Player getPlayer() {
@@ -63,6 +66,7 @@ public class UtilityPlayer {
 
     /**
      * Send the player a message
+     *
      * @param message Message to send
      */
     public void sendMessage(String message) {
@@ -71,6 +75,7 @@ public class UtilityPlayer {
 
     /**
      * Used to get the server they are connected to
+     *
      * @return Null if they are not connected to a server
      */
     public RegisteredServer getServer() {
@@ -88,12 +93,13 @@ public class UtilityPlayer {
     /**
      * Get the server formatted as a string
      */
-    public String getServerFormated() {
+    public String getServerFormatted() {
         return ServerManager.format(this.getServer().getServerInfo().getName());
     }
 
     /**
      * Check if the player is able to vanish
+     *
      * @return If they are able to vanish
      */
     public boolean isVanishable() {
@@ -102,6 +108,7 @@ public class UtilityPlayer {
 
     /**
      * Used to check if this player is vanished
+     *
      * @return True if an error occurred
      * This makes sure there is never an error
      * when the vanished player will be spotted
@@ -109,8 +116,10 @@ public class UtilityPlayer {
     public boolean isVanished() {
         if (this.player == null) return true;
 
+        // If the server contains vanishable players
         if (ServerManager.getPlayersNotVanishable(this.getServer()).size() == 0) return true;
 
+        // Get a non vanishable player
         Player nonVanishablePlayer = ServerManager.getPlayersNotVanishable(this.getServer()).get(0);
 
         // If vanished, the player would not be able to see them on the tab list
@@ -149,6 +158,7 @@ public class UtilityPlayer {
 
     /**
      * Used to get the highest permission from the player
+     *
      * @param permissions List of permissions in order
      */
     public String highestPermission(ArrayList<String> permissions) {

@@ -33,6 +33,12 @@ find:
 servers:
   name: 'servers'
   permission: 'servers'
+
+  # The order of the servers on the list
+  # Any servers that are not in this list will not show
+  order:
+    - name_of_a_server
+
   header: '&8&m&l------&r &6&lServers &8&m&l------'
   server: '{server} &f{online} &7Online Players'
   footer: '&8&m&l---------------------'

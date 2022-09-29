@@ -30,7 +30,7 @@ import java.nio.file.Path;
 @Plugin(
         id = "smutility",
         name = "SmUtility",
-        version = "1.1.1",
+        version = "1.1.2",
         description = "A Velocity Utility Plugin",
         url = "https://smudgg.netlify.app",
         authors = {"Smudge"}
