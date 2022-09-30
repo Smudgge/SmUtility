@@ -38,6 +38,8 @@ public abstract class Command {
 
     public abstract void onCommandRun(UtilityPlayer player, String arguments);
 
+    public abstract void onConsoleRun(String arguments);
+
     /**
      * When the command is executed
      *
@@ -45,18 +47,23 @@ public abstract class Command {
      */
     public int execute(CommandContext<CommandSource> commandContext) {
         CommandSource source = commandContext.getSource();
-        Player player = null;
-        String arguments = null;
 
+        // Get the player that executed the command
+        Player player = null;
         if (source instanceof Player) player = (Player) source;
-        try {
-            if (this.getArgumentName() != null)
-                arguments = commandContext.getArgument(this.getArgumentName(), String.class);
-        } catch (Exception ignored) {
+
+        // Get the arguments
+        String arguments = null;
+        if (this.getArgumentName() != null)
+            arguments = commandContext.getArgument(this.getArgumentName(), String.class);
+
+        // If a player executed the command
+        if (source instanceof Player) {
+            this.onCommandRun(new UtilityPlayer(player), arguments);
+            return 1;
         }
 
-        this.onCommandRun(new UtilityPlayer(player), arguments);
-
+        this.onConsoleRun(arguments);
         return 1;
     }
 
