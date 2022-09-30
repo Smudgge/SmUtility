@@ -4,7 +4,7 @@
   <groupId>me.smudge</groupId>
   <artifactId>SmUtility</artifactId>
   <name>SmUtility</name>
-  <version>1.1.2</version>
+  <version>1.2.0</version>
   <description>A Velocity Utility Plugin</description>
   <url>https://smudgg.netlify.app</url>
   <build>
