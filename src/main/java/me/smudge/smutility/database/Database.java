@@ -43,7 +43,7 @@ public class Database {
         this.fileName = fileName;
 
         // If database is disabled
-        if (ConfigManager.getCommands().getCommandInfo("history").getSection().getBoolean("disable")) return;
+        if (!ConfigManager.getCommands().getCommandInfo("history").getEnabled()) return;
 
         this.setup();
     }

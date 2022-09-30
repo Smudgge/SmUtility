@@ -19,6 +19,7 @@ import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
+import me.smudge.smutility.configuration.ConfigManager;
 
 import java.util.ArrayList;
 import java.util.Collections;

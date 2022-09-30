@@ -16,6 +16,7 @@ import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
+import me.smudge.smutility.configuration.ConfigManager;
 import me.smudge.smutility.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
@@ -39,6 +40,12 @@ public class List extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         ArrayList<String> sendersRankPermissions = new ArrayList<>();
 
         for (ConfigurationSection section : this.getInfo().getAllSections("list")) {
@@ -51,6 +58,11 @@ public class List extends CustomCommand {
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
 
         ArrayList<String> sendersRankPermissions = new ArrayList<>();
 

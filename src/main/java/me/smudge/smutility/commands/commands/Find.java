@@ -36,6 +36,12 @@ public class Find extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         UtilityPlayer playerToFind = new UtilityPlayer(arguments);
 
         if (playerToFind.getPlayer() == null) {
@@ -54,6 +60,12 @@ public class Find extends CustomCommand {
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         UtilityPlayer playerToFind = new UtilityPlayer(arguments);
 
         if (playerToFind.getPlayer() == null) {

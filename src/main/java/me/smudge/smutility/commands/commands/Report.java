@@ -35,6 +35,12 @@ public class Report extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         String message = ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getMessage();
         String parsedMessage = message.replace("{player}", "@console").replace("{message}", arguments);
         String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
@@ -45,6 +51,11 @@ public class Report extends CustomCommand {
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
 
         String parsedMessage = message.replace("{player}", player.getName()).replace("{message}", arguments);
         String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");

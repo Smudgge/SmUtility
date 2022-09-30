@@ -59,6 +59,13 @@ public class CommandOptions {
     }
 
     /**
+     * @return If the command is enabled
+     */
+    public boolean getEnabled() {
+        return this.commands.getSection(this.name).getBoolean("enable");
+    }
+
+    /**
      * Used to get the command option as a section
      */
     public ConfigurationSection getSection() {

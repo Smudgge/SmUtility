@@ -41,13 +41,25 @@ public class CommandHandler {
         CommandHandler.commands.add(new Reload());
         CommandHandler.commands.add(new Info());
 
-        CommandHandler.commands.add(new Alert());
-        CommandHandler.commands.add(new Find());
-        CommandHandler.commands.add(new Servers());
-        CommandHandler.commands.add(new Report());
+        if (ConfigManager.getCommands().getCommandInfo("alert").getEnabled())
+            CommandHandler.commands.add(new Alert());
+
+        if (ConfigManager.getCommands().getCommandInfo("find").getEnabled())
+            CommandHandler.commands.add(new Find());
+
+        if (ConfigManager.getCommands().getCommandInfo("servers").getEnabled())
+            CommandHandler.commands.add(new Servers());
+
+        if (ConfigManager.getCommands().getCommandInfo("report").getEnabled())
+            CommandHandler.commands.add(new Report());
+
         CommandHandler.commands.add(new Send());
-        CommandHandler.commands.add(new List());
-        CommandHandler.commands.add(new History());
+
+        if (ConfigManager.getCommands().getCommandInfo("list").getEnabled())
+            CommandHandler.commands.add(new List());
+
+        if (ConfigManager.getCommands().getCommandInfo("history").getEnabled())
+            CommandHandler.commands.add(new History());
 
         // Staff chat
         for (ConfigurationSection section : ConfigManager.getCommands().getAllSections("chats")) {

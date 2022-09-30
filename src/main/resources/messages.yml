@@ -18,6 +18,8 @@ reloaded: '{prefix} Reloaded all configs! <3'
 playerIsOffline: '{error} Player is offline'
 requiresArguments: '{error} This command requires arguments. &f/<commands> <args>'
 somethingWentWrong: '{error} Something went wrong, please contact your server administrator to check the console.'
+# If you reload a command to disable it, this message will appear until you restart the server to remove the command completely
+disabledFeature: '{error} This feature is disabled'
 
 # Make your servers colourised!
 # When ever the plugin mentions a server it will format it

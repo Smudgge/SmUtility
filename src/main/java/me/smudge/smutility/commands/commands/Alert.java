@@ -11,9 +11,11 @@
 
 package me.smudge.smutility.commands.commands;
 
+import com.velocitypowered.api.proxy.Player;
 import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
+import me.smudge.smutility.configuration.ConfigManager;
 
 public class Alert extends CustomCommand {
 
@@ -34,6 +36,11 @@ public class Alert extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
 
         String message = this.getInfo().getString("message");
 
@@ -44,6 +51,11 @@ public class Alert extends CustomCommand {
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
 
         MessageManager.all(message.replace("{message}", arguments));
         MessageManager.log(message.replace("{message}", arguments));

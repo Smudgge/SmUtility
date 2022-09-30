@@ -10,6 +10,9 @@
 
 alert:
 
+  # If this module should be enabled
+  enable: true
+
   # The commands name /alert
   name: 'alert'
 
@@ -26,11 +29,13 @@ alert:
   message: '&8&l[&f&lAlert&8&l] &a{message}'
 
 find:
+  enable: true
   name: 'find'
   permission: 'find'
   message: '{prefix} &f{player}&a is on &f{server}'
 
 servers:
+  enable: true
   name: 'servers'
   permission: 'servers'
 
@@ -44,6 +49,7 @@ servers:
   footer: '&8&m&l---------------------'
 
 report:
+  enable: true
   name: 'report'
   permission: 'report.use'
   permissionToSee: 'report.see'
@@ -63,6 +69,7 @@ chats:
     format: '{server} {rank}{name} &7: {chat}{message}'
 
 list:
+  enable: true
   name: 'staff'
   permission: 'staff'
   header: '&8&m&l-----&r &6&lStaff List &8&m&l-----'
@@ -77,7 +84,7 @@ list:
 history:
   # Should player history be disabled?
   # This will stop the plugin connecting to a database
-  disable: false
+  enable: true
 
   name: 'history'
   permission: 'history'

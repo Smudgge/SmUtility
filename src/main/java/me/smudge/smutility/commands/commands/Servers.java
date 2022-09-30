@@ -40,6 +40,12 @@ public class Servers extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         String message = this.getMessage();
 
         if (message == null) return;
@@ -49,6 +55,12 @@ public class Servers extends CustomCommand {
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        // If the command is disabled
+        if (!ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getEnabled()) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getDisabledFeature());
+            return;
+        }
+
         message = this.getMessage();
 
         if (message == null) {

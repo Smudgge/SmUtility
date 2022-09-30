@@ -10,12 +10,13 @@ Main Github Page: https://github.com/smuddgge/SmUtility
 
 | Default Command       | Default Permission                           | Usage                                           |
 |-----------------------|----------------------------------------------|-------------------------------------------------|
+| `/smutility` | `smutility.info` | Displays the current version and infomation about the plugin |
+| `/smutilityreload` | `smutility.reload`                           | Used to reload the commands and messages        |
 | `/alert <message>`    | `smutility.alert`                            | Sends a message to everyone on the servers      |
 | `/sc` | `smutility.staffChat`                        | Toggles the staff chat                          |
 | `/sc <message>`       | `smutility.staffChat`                        | Sends a message to players with the permission  |
 | `/find <player name>` | `smutility.find`                             | Used to find a player on the servers            |                  
 | `/list` | `smutility.list`                             | List of players on the servers                  |
-| `/smutilityreload` | `smutility.reload`                           | Used to reload the commands and messages        |
 | `/report <message>` | `smutility.report.use` `smutility.report.see` | Used to report somthing to staff                |
 | `/send <from> <to>` | `smutility.send` | Used to teleport players to a server            |
 | `/servers` | `smutility.servers` | Used to see how many players are on the servers |
@@ -37,6 +38,9 @@ Commands.yml
 
 alert:
 
+  # If this module should be enabled
+  enable: true
+
   # The commands name /alert
   name: 'alert'
 
@@ -53,11 +57,13 @@ alert:
   message: '&8&l[&f&lAlert&8&l] &a{message}'
 
 find:
+  enable: true
   name: 'find'
   permission: 'find'
   message: '{prefix} &f{player}&a is on &f{server}'
 
 servers:
+  enable: true
   name: 'servers'
   permission: 'servers'
 
@@ -65,12 +71,13 @@ servers:
   # Any servers that are not in this list will not show
   order:
     - name_of_a_server
-  
+
   header: '&8&m&l------&r &6&lServers &8&m&l------'
   server: '{server} &f{online} &7Online Players'
   footer: '&8&m&l---------------------'
 
 report:
+  enable: true
   name: 'report'
   permission: 'report.use'
   permissionToSee: 'report.see'
@@ -90,6 +97,7 @@ chats:
     format: '{server} {rank}{name} &7: {chat}{message}'
 
 list:
+  enable: true
   name: 'staff'
   permission: 'staff'
   header: '&8&m&l-----&r &6&lStaff List &8&m&l-----'
@@ -104,7 +112,7 @@ list:
 history:
   # Should player history be disabled?
   # This will stop the plugin connecting to a database
-  disable: false
+  enable: true
 
   name: 'history'
   permission: 'history'
@@ -114,6 +122,7 @@ history:
   footer: '&8&m&l---------------------'
   # Amount of history to show
   limit: 10
+
 ```
 
 Messages.yml
@@ -125,6 +134,7 @@ Messages.yml
 # -----------------------------------------
 
 prefix: '&8&l[&f&lServer&8&l]&a'
+error: '&7&l>&7'
 
 # Chat colour
 default: '&#ffffee'
@@ -132,8 +142,13 @@ vanished: '&#c0fce6'
 
 # Command messages
 reloaded: '{prefix} Reloaded all configs! <3'
-playerIsOffline: '{prefix} Player is offline'
-requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'
+
+# Command errors
+playerIsOffline: '{error} Player is offline'
+requiresArguments: '{error} This command requires arguments. &f/<commands> <args>'
+somethingWentWrong: '{error} Something went wrong, please contact your server administrator to check the console.'
+# If you reload a command to disable it, this message will appear until you restart the server to remove the command completely
+disabledFeature: '{error} This feature is disabled'
 
 # Make your servers colourised!
 # When ever the plugin mentions a server it will format it

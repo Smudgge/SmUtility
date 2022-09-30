@@ -50,4 +50,8 @@ public class MessageOptions {
     public String getSomethingWentWrong() {
         return this.messages.getString("somethingWentWrong");
     }
+
+    public String getDisabledFeature() {
+        return this.messages.getString("disabledFeature");
+    }
 }

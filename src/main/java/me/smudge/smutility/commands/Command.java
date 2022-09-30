@@ -18,8 +18,11 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
+import me.smudge.smutility.commands.commands.Chat;
+import me.smudge.smutility.configuration.ConfigManager;
 
 import java.util.ArrayList;
 
@@ -54,7 +57,7 @@ public abstract class Command {
 
         // Get the arguments
         String arguments = null;
-        if (this.getArgumentName() != null)
+        if (this.getArgumentName() != null && commandContext.getArguments().size() > 0)
             arguments = commandContext.getArgument(this.getArgumentName(), String.class);
 
         // If a player executed the command
