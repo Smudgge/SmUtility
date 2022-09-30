@@ -50,6 +50,6 @@ public class Info extends Command {
         return "&8&m&l------&r &6&lSmUtility &8&m&l------\n\n" +
                 "&7Velocity proxy utility plugin\n" +
                 "&7Version &f" + SmUtility.class.getAnnotation(Plugin.class).version() + "\n\n" +
-                "'&8&m&l---------------------'";
+                "&8&m&l---------------------";
     }
 }
