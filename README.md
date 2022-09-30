@@ -8,6 +8,8 @@ Main Github Page: https://github.com/smuddgge/SmUtility
 
 ## Commands
 
+> Keep in mind, if you are using Luckperms, you can do `/lpv` with velocity
+
 | Default Command       | Default Permission                           | Usage                                           |
 |-----------------------|----------------------------------------------|-------------------------------------------------|
 | `/smutility` | `smutility.info` | Displays the current version and infomation about the plugin |
