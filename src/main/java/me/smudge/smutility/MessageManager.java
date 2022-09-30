@@ -108,7 +108,9 @@ public class MessageManager {
      * @param message Message to log
      */
     public static void log(String message) {
-        SmUtility.getLogger().info(message);
+        for (String string : message.split("\n")) {
+            SmUtility.getProxyServer().getConsoleCommandSource().sendMessage(convert(string));
+        }
     }
 
     /**
@@ -117,7 +119,7 @@ public class MessageManager {
      */
     public static void logHeader() {
         String message =
-                "&a   _____           _    _ _   _ _ _ _         %" +
+                        "&a   _____           _    _ _   _ _ _ _         %" +
                         "&a  / ____|         | |  | | | (_) (_) |       %" +
                         "&a | (___  _ __ ___ | |  | | |_ _| |_| |_ _   _ %" +
                         "&a  \\___ \\| '_ ` _ \\| |  | | __| | | | __| | | |%" +
@@ -129,7 +131,7 @@ public class MessageManager {
                         "     &7By Smudge         &7Version " + SmUtility.class.getAnnotation(Plugin.class).version();
 
         for (String string : message.split("%")) {
-            SmUtility.getProxyServer().getConsoleCommandSource().sendMessage(convert(string));
+            MessageManager.log(string);
         }
     }
 }

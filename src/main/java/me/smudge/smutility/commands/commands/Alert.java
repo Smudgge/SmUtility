@@ -33,6 +33,16 @@ public class Alert extends CustomCommand {
     }
 
     @Override
+    public void onConsoleRun(String arguments) {
+
+        String message = this.getInfo().getString("message");
+
+        MessageManager.all(message.replace("{message}", arguments));
+        MessageManager.log(message.replace("{message}", arguments));
+
+    }
+
+    @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
         MessageManager.all(message.replace("{message}", arguments));

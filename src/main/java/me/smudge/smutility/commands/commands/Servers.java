@@ -12,7 +12,9 @@
 package me.smudge.smutility.commands.commands;
 
 import com.velocitypowered.api.proxy.server.RegisteredServer;
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.ServerManager;
+import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
 import me.smudge.smutility.configuration.ConfigManager;
@@ -37,7 +39,20 @@ public class Servers extends CustomCommand {
     }
 
     @Override
+    public void onConsoleRun(String arguments) {
+        MessageManager.log(this.getMessage());
+    }
+
+    @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+        player.sendMessage(this.getMessage());
+    }
+
+    /**
+     * Used to get the servers message
+     * @return String version of the list of servers
+     */
+    private String getMessage() {
         StringBuilder stringBuilder = new StringBuilder();
 
         // Append the header
@@ -46,6 +61,10 @@ public class Servers extends CustomCommand {
 
         // Get the order of servers
         ArrayList<String> order = (ArrayList<String>) ConfigManager.getCommands().getCommandInfo("servers").getSection().get("order");
+
+        if (order == null) {
+            MessageManager.log("&7Cannot show the servers list because &forder &7is not defined in the &6commands.yml");
+        }
 
         // Loop though all the servers in the order list
         for (String serverName : order) {
@@ -61,7 +80,7 @@ public class Servers extends CustomCommand {
         stringBuilder.append("\n");
         stringBuilder.append(ConfigManager.getCommands().getCommandInfo("servers").getSection().getString("footer"));
 
-        player.sendMessage(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 
     /**

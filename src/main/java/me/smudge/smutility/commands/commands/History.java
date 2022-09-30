@@ -1,5 +1,6 @@
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
@@ -30,6 +31,18 @@ public class History extends CustomCommand {
     }
 
     @Override
+    public void onConsoleRun(String arguments) {
+        CommandOptions options = ConfigManager.getCommands().getCommandInfo("history");
+
+        if (options.getSection().getBoolean("disable")) {
+            MessageManager.log("&7&l> &7This feature is disabled, to enable set &fdisable &7to &ffalse");
+            return;
+        }
+
+        MessageManager.log(this.getMessage(arguments));
+    }
+
+    @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
         CommandOptions options = ConfigManager.getCommands().getCommandInfo("history");
 
@@ -37,6 +50,12 @@ public class History extends CustomCommand {
             player.sendMessage("&7&l> &7This feature is disabled, to enable set &fdisable &7to &ffalse");
             return;
         }
+
+        player.sendMessage(this.getMessage(arguments));
+    }
+
+    private String getMessage(String arguments) {
+        CommandOptions options = ConfigManager.getCommands().getCommandInfo("history");
 
         StringBuilder builder = new StringBuilder();
 
@@ -66,6 +85,6 @@ public class History extends CustomCommand {
 
         builder.append("\n").append(options.getSection().getString("footer"));
 
-        player.sendMessage(builder.toString());
+        return builder.toString();
     }
 }

@@ -34,6 +34,16 @@ public class Report extends CustomCommand {
     }
 
     @Override
+    public void onConsoleRun(String arguments) {
+        String message = ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getMessage();
+        String parsedMessage = message.replace("{player}", "@console").replace("{message}", arguments);
+        String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
+
+        MessageManager.log(parsedMessage);
+        MessageManager.all(parsedMessage, permission);
+    }
+
+    @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
 
         String parsedMessage = message.replace("{player}", player.getName()).replace("{message}", arguments);

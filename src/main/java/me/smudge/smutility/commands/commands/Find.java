@@ -11,6 +11,7 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.CustomCommand;
@@ -31,6 +32,24 @@ public class Find extends CustomCommand {
     @Override
     public String getArgumentName() {
         return "player";
+    }
+
+    @Override
+    public void onConsoleRun(String arguments) {
+        UtilityPlayer playerToFind = new UtilityPlayer(arguments);
+
+        if (playerToFind.getPlayer() == null) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getPlayerIsOffline());
+            return;
+        }
+
+        String serverName = playerToFind.getServer().getServerInfo().getName();
+
+        MessageManager.log(
+                this.getInfo().getString("message")
+                    .replace("{player}", arguments)
+                    .replace("{server}", ServerManager.format(serverName))
+        );
     }
 
     @Override

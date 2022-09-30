@@ -15,6 +15,7 @@ import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
@@ -68,6 +69,35 @@ public class Send extends Command {
         List<Player> selectedPlayer = this.parseFromLocation(fromArg);
 
         player.sendMessage("{prefix} Attempting to send players/player");
+
+        for (Player p : selectedPlayer) {
+            if (inServer(p, toServer.get())) continue;
+            p.createConnectionRequest(toServer.get()).fireAndForget();
+        }
+    }
+
+    @Override
+    public void onConsoleRun(String argument) {
+        String[] arguments = argument.split(" ");
+
+        if (arguments.length < 2) {
+            MessageManager.log("{prefix} Usage: /%s <from> <to>");
+            return;
+        }
+
+        final String fromArg = arguments[0];
+        final String toArg = arguments[1];
+
+        Optional<RegisteredServer> toServer = parseToLocation(toArg);
+
+        if (toServer.isEmpty()) {
+            MessageManager.log("{prefix} Not a valid location - /send #server #server - /send @a #server");
+            return;
+        }
+
+        List<Player> selectedPlayer = this.parseFromLocation(fromArg);
+
+        MessageManager.log("{prefix} Attempting to send players/player");
 
         for (Player p : selectedPlayer) {
             if (inServer(p, toServer.get())) continue;

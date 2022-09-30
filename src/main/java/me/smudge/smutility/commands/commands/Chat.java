@@ -92,4 +92,21 @@ public class Chat extends Command {
 
         MessageManager.all(message, SmUtility.permissionPrefix + "." + this.section.getString("permission"));
     }
+
+    @Override
+    public void onConsoleRun(String arguments) {
+
+        if (arguments == null) {
+            MessageManager.log("You cannot toggle the console");
+        }
+
+        String message = this.section.getString("format")
+                .replace("{server}", "Console")
+                .replace("{rank}", "&7")
+                .replace("{name}", "Console")
+                .replace("{chat}", "&f")
+                .replace("{message}", arguments);
+
+        MessageManager.all(message, SmUtility.permissionPrefix + "." + this.section.getString("permission"));
+    }
 }

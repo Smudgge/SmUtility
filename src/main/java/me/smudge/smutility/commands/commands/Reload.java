@@ -11,6 +11,7 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
@@ -19,6 +20,7 @@ import me.smudge.smutility.configuration.ConfigManager;
 import java.util.ArrayList;
 
 public class Reload extends Command {
+
     @Override
     public String getName() {
         return "smutilityreload";
@@ -44,7 +46,15 @@ public class Reload extends Command {
 
         ConfigManager.reloadAll();
         player.sendMessage(ConfigManager.getMessages().getMessages().getReloaded());
+        SmUtility.reloadCommands();
 
+    }
+
+    @Override
+    public void onConsoleRun(String arguments) {
+
+        ConfigManager.reloadAll();
+        MessageManager.log(ConfigManager.getMessages().getMessages().getReloaded());
         SmUtility.reloadCommands();
 
     }

@@ -11,6 +11,7 @@
 
 package me.smudge.smutility.commands.commands;
 
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
@@ -37,7 +38,32 @@ public class List extends CustomCommand {
     }
 
     @Override
+    public void onConsoleRun(String arguments) {
+        ArrayList<String> sendersRankPermissions = new ArrayList<>();
+
+        for (ConfigurationSection section : this.getInfo().getAllSections("list")) {
+            String formattedPermission = SmUtility.permissionPrefix + ".rank." + section.getKey();
+            sendersRankPermissions.add(formattedPermission);
+        }
+
+        MessageManager.log(this.getMessage(sendersRankPermissions));
+    }
+
+    @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
+
+        ArrayList<String> sendersRankPermissions = new ArrayList<>();
+
+        for (ConfigurationSection section : this.getInfo().getAllSections("list")) {
+            String formattedPermission = SmUtility.permissionPrefix + ".rank." + section.getKey();
+
+            if (player.getPlayer().hasPermission(formattedPermission)) sendersRankPermissions.add(formattedPermission);
+        }
+
+        player.sendMessage(this.getMessage(sendersRankPermissions));
+    }
+
+    private String getMessage(ArrayList<String> sendersRankPermissions) {
         // Building the list of players
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -55,7 +81,7 @@ public class List extends CustomCommand {
             ArrayList<UtilityPlayer> players = ServerManager.getPlayerListFiltered(formattedPermission);
 
             // If the player has the permission they can see the vanished players
-            if (player.getPlayer().hasPermission(formattedPermission))
+            if (sendersRankPermissions.contains(formattedPermission))
                 players = ServerManager.getPlayerListRaw(formattedPermission);
 
             // If there are no players
@@ -85,6 +111,6 @@ public class List extends CustomCommand {
         stringBuilder.append("\n");
         stringBuilder.append(this.getInfo().getString("footer"));
 
-        player.sendMessage(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 }
