@@ -42,7 +42,7 @@ public class MessageManager {
                             .replace("{error}", error)))
                     .build();
         } catch (Exception exception) {
-            SmUtility.getLogger().warn("Could not find prefix value in messages.yml!");
+            SmUtility.getLogger().warn("Could not find prefix or error value in messages.yml!");
             return Component.text()
                     .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message))
                     .build();
