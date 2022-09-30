@@ -40,12 +40,23 @@ public class Servers extends CustomCommand {
 
     @Override
     public void onConsoleRun(String arguments) {
-        MessageManager.log(this.getMessage());
+        String message = this.getMessage();
+
+        if (message == null) return;
+
+        MessageManager.log(message);
     }
 
     @Override
     protected void onCommandRun(UtilityPlayer player, String arguments, String message) {
-        player.sendMessage(this.getMessage());
+        message = this.getMessage();
+
+        if (message == null) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getSomethingWentWrong());
+            return;
+        }
+
+        player.sendMessage(message);
     }
 
     /**
@@ -64,6 +75,7 @@ public class Servers extends CustomCommand {
 
         if (order == null) {
             MessageManager.log("&7Cannot show the servers list because &forder &7is not defined in the &6commands.yml");
+            return null;
         }
 
         // Loop though all the servers in the order list

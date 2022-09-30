@@ -28,6 +28,7 @@ public class MessageManager {
      */
     public static Component convert(String message) {
         String prefix = ConfigManager.getMessages().getPrefix();
+        String error = ConfigManager.getMessages().getError();
 
         if (message == null) {
             SmUtility.getLogger().warn("Message is null! Please check messages.yml config for missing values.");
@@ -45,7 +46,8 @@ public class MessageManager {
         try {
             return Component.text()
                     .append(LegacyComponentSerializer.legacyAmpersand().deserialize(message
-                            .replace("{prefix}", prefix)))
+                            .replace("{prefix}", prefix)
+                            .replace("{error}", error)))
                     .build();
         } catch (Exception exception) {
             SmUtility.getLogger().warn("Could not find prefix value in messages.yml!");

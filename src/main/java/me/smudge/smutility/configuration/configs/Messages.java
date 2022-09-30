@@ -51,4 +51,8 @@ public class Messages extends Configuration {
     public Map<String, String> getRanks() {
         return (Map<String, String>) this.get("ranks");
     }
+
+    public String getError() {
+        return this.getString("error");
+    }
 }

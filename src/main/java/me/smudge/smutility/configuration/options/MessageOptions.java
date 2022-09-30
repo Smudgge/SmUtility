@@ -46,4 +46,8 @@ public class MessageOptions {
     public String getRequiresArguments() {
         return this.messages.getString("requiresArguments");
     }
+
+    public String getSomethingWentWrong() {
+        return this.messages.getString("somethingWentWrong");
+    }
 }

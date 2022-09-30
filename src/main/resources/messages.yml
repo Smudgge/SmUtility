@@ -5,6 +5,7 @@
 # -----------------------------------------
 
 prefix: '&8&l[&f&lServer&8&l]&a'
+error: '&7&l>&7'
 
 # Chat colour
 default: '&#ffffee'
@@ -12,8 +13,11 @@ vanished: '&#c0fce6'
 
 # Command messages
 reloaded: '{prefix} Reloaded all configs! <3'
-playerIsOffline: '{prefix} Player is offline'
-requiresArguments: '&7&l> &7This command requires arguments. /<commands> <args>'
+
+# Command errors
+playerIsOffline: '{error} Player is offline'
+requiresArguments: '{error} This command requires arguments. &f/<commands> <args>'
+somethingWentWrong: '{error} Something went wrong, please contact your server administrator to check the console.'
 
 # Make your servers colourised!
 # When ever the plugin mentions a server it will format it
