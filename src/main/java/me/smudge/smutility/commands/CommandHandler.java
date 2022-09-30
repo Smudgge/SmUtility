@@ -39,6 +39,8 @@ public class CommandHandler {
         CommandHandler.commands = new ArrayList<>();
 
         CommandHandler.commands.add(new Reload());
+        CommandHandler.commands.add(new Info());
+
         CommandHandler.commands.add(new Alert());
         CommandHandler.commands.add(new Find());
         CommandHandler.commands.add(new Servers());
