@@ -42,7 +42,10 @@ public class Report extends CustomCommand {
         }
 
         String message = ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getMessage();
-        String parsedMessage = message.replace("{player}", "@console").replace("{message}", arguments);
+        String parsedMessage = message
+                .replace("{player}", "@console")
+                .replace("{message}", arguments)
+                .replace("{server}", "@console");
         String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
 
         MessageManager.log(parsedMessage);
@@ -57,7 +60,10 @@ public class Report extends CustomCommand {
             return;
         }
 
-        String parsedMessage = message.replace("{player}", player.getName()).replace("{message}", arguments);
+        String parsedMessage = message
+                .replace("{player}", player.getName())
+                .replace("{message}", arguments)
+                .replace("{server}", player.getServerFormatted());
         String permission = "smutility." + ConfigManager.getCommands().getCommandInfo(this.getConfigName()).getSection().getString("permissionToSee");
 
         // If they are unable to see their own report, send it to them

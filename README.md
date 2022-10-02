@@ -83,7 +83,7 @@ report:
   name: 'report'
   permission: 'report.use'
   permissionToSee: 'report.see'
-  message: '&f{player} &chas reported &7: &f{message}'
+  message: '&f{player} &7{server} &chas reported&7: &f{message}'
 
 chats:
   StaffChat:
