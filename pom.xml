@@ -6,7 +6,7 @@
 
     <groupId>me.smudge</groupId>
     <artifactId>SmUtility</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
 
     <name>SmUtility</name>
@@ -180,6 +180,13 @@
             <artifactId>velocity-api</artifactId>
             <version>3.1.1</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Gson Serializer -->
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-serializer-gson</artifactId>
+            <version>4.11.0</version>
         </dependency>
 
         <!-- Snake YML -->

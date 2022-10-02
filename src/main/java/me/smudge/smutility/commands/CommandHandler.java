@@ -44,6 +44,8 @@ public class CommandHandler {
         if (ConfigManager.getCommands().getCommandInfo("alert").getEnabled())
             CommandHandler.commands.add(new Alert());
 
+        CommandHandler.commands.add(new AlertRaw());
+
         if (ConfigManager.getCommands().getCommandInfo("find").getEnabled())
             CommandHandler.commands.add(new Find());
 
