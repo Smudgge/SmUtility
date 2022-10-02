@@ -2,10 +2,12 @@ package me.smudge.smutility.commands.commands;
 
 import com.google.gson.Gson;
 import com.velocitypowered.api.proxy.Player;
+import me.smudge.smutility.MessageManager;
 import me.smudge.smutility.ServerManager;
 import me.smudge.smutility.SmUtility;
 import me.smudge.smutility.UtilityPlayer;
 import me.smudge.smutility.commands.Command;
+import me.smudge.smutility.configuration.ConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
@@ -38,22 +40,30 @@ public class AlertRaw extends Command {
     @Override
     public void onCommandRun(UtilityPlayer player, String arguments) {
 
-        GsonComponentSerializer gsonComponentSerializer = GsonComponentSerializer.gson();
-        Component component = gsonComponentSerializer.deserialize(arguments);
+        try {
+            GsonComponentSerializer gsonComponentSerializer = GsonComponentSerializer.gson();
+            Component component = gsonComponentSerializer.deserialize(arguments);
 
-        for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
-            temp.sendMessage(component);
+            for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
+                temp.sendMessage(component);
+            }
+        } catch (Exception exception) {
+            player.sendMessage(ConfigManager.getMessages().getMessages().getInvalidArgument());
         }
     }
 
     @Override
     public void onConsoleRun(String arguments) {
 
-        GsonComponentSerializer gsonComponentSerializer = GsonComponentSerializer.gson();
-        Component component = gsonComponentSerializer.deserialize(arguments);
+        try {
+            GsonComponentSerializer gsonComponentSerializer = GsonComponentSerializer.gson();
+            Component component = gsonComponentSerializer.deserialize(arguments);
 
-        for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
-            temp.sendMessage(component);
+            for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
+                temp.sendMessage(component);
+            }
+        } catch (Exception exception) {
+            MessageManager.log(ConfigManager.getMessages().getMessages().getInvalidArgument());
         }
     }
 }

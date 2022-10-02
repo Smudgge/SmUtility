@@ -14,6 +14,7 @@ Velocity Form : https://forums.papermc.io/threads/utility-plugin-customisable-ch
 | `/smutility` | `smutility.info` | Displays the current version and infomation about the plugin |
 | `/smutilityreload` | `smutility.reload`                           | Used to reload the commands and messages        |
 | `/alert <message>`    | `smutility.alert`                            | Sends a message to everyone on the servers      |
+| `/alertraw <json>` | `smutility.alertraw` | Converts a json tell raw message and sends it to everyone |
 | `/sc` | `smutility.staffChat`                        | Toggles the staff chat                          |
 | `/sc <message>`       | `smutility.staffChat`                        | Sends a message to players with the permission  |
 | `/find <player name>` | `smutility.find`                             | Used to find a player on the servers            |                  

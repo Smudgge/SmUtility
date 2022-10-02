@@ -54,4 +54,8 @@ public class MessageOptions {
     public String getDisabledFeature() {
         return this.messages.getString("disabledFeature");
     }
+
+    public String getInvalidArgument() {
+        return this.messages.getString("invalidArgument");
+    }
 }
