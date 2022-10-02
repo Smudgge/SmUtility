@@ -47,6 +47,9 @@ public class AlertRaw extends Command {
             for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
                 temp.sendMessage(component);
             }
+
+            MessageManager.log(component);
+
         } catch (Exception exception) {
             player.sendMessage(ConfigManager.getMessages().getMessages().getInvalidArgument());
         }
@@ -62,6 +65,9 @@ public class AlertRaw extends Command {
             for (Player temp : SmUtility.getProxyServer().getAllPlayers()) {
                 temp.sendMessage(component);
             }
+
+            MessageManager.log(component);
+
         } catch (Exception exception) {
             MessageManager.log(ConfigManager.getMessages().getMessages().getInvalidArgument());
         }

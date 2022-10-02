@@ -107,6 +107,10 @@ public class MessageManager {
         }
     }
 
+    public static void log(Component component) {
+        SmUtility.getProxyServer().getConsoleCommandSource().sendMessage(component);
+    }
+
     /**
      * Used to log the header in console
      * When the plugin has loaded
